@@ -22,7 +22,9 @@
   "dependencies": {
     "hapi": "~1.20.0",
     "sequelize": "~2.0.0-beta.2",
-    "async": "~0.2.9"
+    "async": "~0.2.9",
+    "mysql": "~2.0.0-rc2",
+    "request": "~2.30.0"
   },
   "devDependencies": {
     "mocha": "~1.15.1"
