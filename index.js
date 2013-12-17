@@ -1,15 +1,11 @@
-var Directors = require('./lib');
-var Hapi = Directors.Hapi,
+var Hapi = require('hapi'),
     options = { cors: true };
 
 var masterConfig = require('./config/config');
-var serverConfig = masterConfig.config;
-var server = new Hapi.Server(serverConfig.hostname, serverConfig.port, options);
+var server = new Hapi.Server(masterConfig.config.hostname, masterConfig.config.port, options);
+var serverroutes = require('./lib/routes');
 
-var director = Directors.Director;
-server.route([
-        { method: "POST", path: "/directors", config: { handler: director.add}}
-]);
+server.route(serverroutes.routes) 
 
 var virt_modules = [];
 
