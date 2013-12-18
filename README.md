@@ -55,7 +55,7 @@ exports.config = {
 
 Run with ```node .```!
 
-Tileset API Reference
+LiveStream API Reference
 =============
 
 See [Live Stream API reference](/docs/Reference.md)
