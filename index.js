@@ -78,9 +78,9 @@ server.route([
     }
 ]) 
 
-var virt_modules = [];
-
 var db = require('./lib/models');
-console.log('database setup complete');
-server.start();
-console.log('Server up at ' + server.info.uri + ' !');
+db.setupTables(function(){
+    console.log('database setup complete');
+    server.start()
+    console.log('Server up at ' + server.info.uri + ' !');
+})

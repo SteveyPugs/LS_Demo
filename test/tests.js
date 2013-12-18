@@ -4,7 +4,10 @@ var directory = require("../lib/").Directory
 describe('Livestream Tests', function(){
 	before(function(done){
 		var db = require('../lib/models');
-		done()
+		db.setupTables(function(){
+		    console.log('database setup complete');
+		    done()
+		})
 	})
 
 	describe('#check()',function(){
