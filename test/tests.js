@@ -171,16 +171,77 @@ describe('Livestream Tests', function(){
 	})
 
 
-	describe('#update()',function(done){
+	describe('#update()',function(){
+		//exists and will change both
+		var director_name_1 = "Martin Scorsese"
+		var movies_1 = "Rocky and Bullwinkle"
+		var camera_1 = "35 MM 3D Panasonic"
+
+		//exists and will change just cameras
+		var director_name_2 = "Drake Cortes"
+		var camera_2 = "35 MM 3D Panasonic"
+
+		//exists and will change just movies
+		var director_name_3 = "David Pfeiffer"
+		var movies_3 = "Rocky and Bullwinkle"
+
+		//exists and will change nothing
+		var director_name_4 = "Don Lucky LB Dms"
+
+		//does not exists and will change nothing
+		var director_name_5 = "Stephen Pugliese"
+		var movies_5 = null
+		var camera_5 = null
+
+
+		it('should change both fields with existing user',function(done){
+			var update_details = {full_name: director_name_1, favorite_movies: movies_1, favorite_camera: camera_1}
+			directory.update(update_details, function(err,updatedDirector){
+				assert(err == null)
+				assert(updatedDirector == undefined)
+				done()
+			})
+		})
+
+		it('should change just camera with existing user',function(done){
+			var update_details = {full_name: director_name_2, favorite_camera: camera_2}
+			directory.update(update_details, function(err,updatedDirector){
+				assert(err == null)
+				assert(updatedDirector == undefined)
+				done()
+			})
+		})
+
+		it('should change just movies with existing user',function(done){
+			var update_details = {full_name: director_name_3, favorite_movies: movies_3}
+			directory.update(update_details, function(err,updatedDirector){
+				assert(err == null)
+				assert(updatedDirector == undefined)
+				done()
+			})
+		})
+
+		it('should change no fields and not update existing user',function(done){
+			var update_details = {full_name: director_name_4}
+			directory.update(update_details, function(err,updatedDirector){
+				assert(err !== null)
+				assert(updatedDirector == undefined)
+				done()
+			})
+		})
+
+		it('should change nothing because user does not exist',function(done){
+			var update_details = {full_name: director_name_5, favorite_movies: movies_5, favorite_camera: camera_5}
+			directory.update(update_details, function(err,updatedDirector){
+				assert(err !== null)
+				assert(updatedDirector == undefined)
+				done()
+			})
+		})
+
 		//it('should return an error if user is not authenticated',function(done){
 
 		//})
-		it('should return an error if director is not already in the database',function(done){
-
-		})
-		it('should return an error if director information (dob and full name) is different from whats in the database, only movie and camera can change',function(done){
-
-		})
 	})
 	describe('#list()',function(done){
 		it('should return an error if no directors are in the database', function(done){
