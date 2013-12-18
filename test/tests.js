@@ -12,8 +12,8 @@ describe('Livestream Tests', function(){
 
 	describe('#check()',function(){
 		it('should return an error because livestream id is not provided', function(done){
-			var postItems = {livestream_id: null}
-			directory.check(postItems,function(err,directorCheck){
+			var liveStreamID = null
+			directory.check(liveStreamID,function(err,directorCheck){
 				assert(err !== null);
                 assert(directorCheck == undefined);
 				done()
@@ -22,8 +22,7 @@ describe('Livestream Tests', function(){
 
 		it('should return a director because livestream id was provided', function(done){
 			var liveStreamID = 6488818
-			var postItems = {livestream_id: liveStreamID}
-			directory.check(postItems,function(err,directorCheck){
+			directory.check(liveStreamID,function(err,directorCheck){
 				assert(err == null);
                 assert(directorCheck[0] !== undefined);
                 assert(directorCheck[0].full_name !== undefined);
@@ -52,8 +51,7 @@ describe('Livestream Tests', function(){
 		var camera_4 = null
 
 		it('should add new director w/ camera and movies',function(done){
-			var postItems = {livestream_id: livestreamID_1}
-			directory.check(postItems,function(err,directorCheck){
+			directory.check(livestreamID_1,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,
 					dob: directorCheck[0].dob,
@@ -77,8 +75,7 @@ describe('Livestream Tests', function(){
 		})
 
 		it('should add new director w/o camera and movies',function(done){
-			var postItems = {livestream_id: livestreamID_2}
-			directory.check(postItems,function(err,directorCheck){
+			directory.check(livestreamID_2,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,
 					dob: directorCheck[0].dob,
@@ -102,8 +99,7 @@ describe('Livestream Tests', function(){
 		})
 
 		it('should add new director w/o movies',function(done){
-			var postItems = {livestream_id: livestreamID_3}
-			directory.check(postItems,function(err,directorCheck){
+			directory.check(livestreamID_3,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,
 					dob: directorCheck[0].dob,
@@ -127,8 +123,7 @@ describe('Livestream Tests', function(){
 		})
 
 		it('should add new director w/o camera',function(done){
-			var postItems = {livestream_id: livestreamID_4}
-			directory.check(postItems,function(err,directorCheck){
+			directory.check(livestreamID_4,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,
 					dob: directorCheck[0].dob,
@@ -152,8 +147,7 @@ describe('Livestream Tests', function(){
 		})
 
 		it('should not add new director because they are registered',function(done){
-			var postItems = {livestream_id: livestreamID_1}
-			directory.check(postItems,function(err,directorCheck){
+			directory.check(livestreamID_1,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,
 					dob: directorCheck[0].dob,

@@ -9,12 +9,10 @@ server.route([
          method: 'POST', path: '/directors', config: {
              handler: function() {
              	var request = this;
-
-             	var liveStreamGET = { livestream_id: request.payload.livestream_id }
              	var liveStreamID = request.payload.livestream_id
              	var camera = request.payload.favorite_camera
              	var movies = request.payload.favorite_movies
-             	Directory.check(liveStreamGET,function(err,directorCheck){
+             	Directory.check(liveStreamID,function(err,directorCheck){
              		if (err){
      					request.reply(err);
      				}
