@@ -1,5 +1,5 @@
 test:
-        ./node_modules/.bin/mocha --reporter list
+	./node_modules/.bin/mocha --reporter list
 install:
-        npm install .
+	npm install .
 .PHONY: test
