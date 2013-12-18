@@ -29,7 +29,6 @@ describe('Livestream Tests', function(){
 				done()
 			})
 		})
-
 	})
 
 	describe('#add()',function(){
@@ -170,7 +169,6 @@ describe('Livestream Tests', function(){
 		})
 	})
 
-
 	describe('#update()',function(){
 		//exists and will change both
 		var director_name_1 = "Martin Scorsese"
@@ -238,14 +236,15 @@ describe('Livestream Tests', function(){
 				done()
 			})
 		})
-
-		//it('should return an error if user is not authenticated',function(done){
-
-		//})
 	})
-	describe('#list()',function(done){
-		it('should return an error if no directors are in the database', function(done){
 
+	describe('#list()',function(done){
+		it('should return a list of directors', function(done){
+			directory.list({}, function(err,directorList){
+				assert(err == null)
+				assert(directorList != undefined)
+				done()
+			})
 		})
 	})
 })
