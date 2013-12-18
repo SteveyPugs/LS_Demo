@@ -67,7 +67,7 @@ server.route([
         method: 'GET', path: '/directors', config: {
             handler: function() {
             	var request = this;
-                Directory.list({ }, function(err, getAllDirectors) {
+                Directory.list(function(err, getAllDirectors) {
                     if (err) throw err;
                     request.reply(getAllDirectors);
                 })     
