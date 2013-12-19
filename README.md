@@ -57,7 +57,7 @@ exports.config = {
 };
 ```
 
-Set up the HTTP server, mail, and tls config in ```./config/config.js```. The following is customizable:
+Set up the HTTP server config in ```./config/config.js```. The following is customizable:
 ```
 exports.config = {
   hostname: 'localhost',
