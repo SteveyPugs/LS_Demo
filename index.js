@@ -6,6 +6,7 @@ var server = new Hapi.Server(masterConfig.config.hostname, masterConfig.config.p
 var Directory = require('./lib/').Directory;
 server.route([
 {
+    //route to add the director to the db
     method: 'POST', path: '/directors', config: {
         handler: function() {
             var request = this;
@@ -33,6 +34,7 @@ server.route([
     }
 },
 {
+    //route to update a director
     method: 'POST', path: '/director/update', config: {
         handler: function() {
             var request = this;
@@ -63,6 +65,7 @@ server.route([
     }
 },
 {
+    //route to pull a list of all the directors
     method: 'GET', path: '/directors', config: {
         handler: function() {
             var request = this;
@@ -75,6 +78,7 @@ server.route([
 }
 ]) 
 
+//creating all the tables
 var db = require('./lib/models');
 db.setupTables(function(){
     console.log('database setup complete');
