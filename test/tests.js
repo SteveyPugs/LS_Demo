@@ -13,24 +13,22 @@ describe('Livestream Tests', function(){
 	describe('#check()',function(){
 
 		it('should return an error because livestream id is not provided', function(done){
-			this.timeout(5000);
 			var liveStreamID = null
 			directory.check(liveStreamID,function(err,directorCheck){
 				assert(err !== null);
-                assert(directorCheck == undefined);
+				assert(directorCheck == undefined);
 				done()
 			})
 		})
 
 		it('should return a director because livestream id was provided', function(done){
-			this.timeout(5000);
 			var liveStreamID = 6488818
 			directory.check(liveStreamID,function(err,directorCheck){
 				assert(err == null);
-                assert(directorCheck[0] !== undefined);
-                assert(directorCheck[0].full_name !== undefined);
-                assert(directorCheck[0].dob !== undefined);
-                assert(directorCheck[0].livestream_ID !== undefined);
+				assert(directorCheck[0] !== undefined);
+				assert(directorCheck[0].full_name !== undefined);
+				assert(directorCheck[0].dob !== undefined);
+				assert(directorCheck[0].livestream_ID !== undefined);
 				done()
 			})
 		})
@@ -54,7 +52,6 @@ describe('Livestream Tests', function(){
 		var camera_4 = null
 
 		it('should add new director w/ camera and movies',function(done){
-			this.timeout(5000);
 			directory.check(livestreamID_1,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,
@@ -64,23 +61,21 @@ describe('Livestream Tests', function(){
 					livestream_ID: directorCheck[0].livestream_ID
 				}
 				directory.add(director_details, function(err,newDirector){
-					done()
 					assert(err == null)
 					assert(newDirector.dataValues !== undefined)
-                	assert(newDirector.dataValues.full_name !== undefined)
-                	assert(newDirector.dataValues.dob !== undefined)
-                	assert(newDirector.dataValues.favorite_camera !== undefined)
-                	assert(newDirector.dataValues.favorite_movies !== undefined)
-                	assert(newDirector.dataValues.livestream_ID !== undefined)
-                	assert(newDirector.dataValues.id !== undefined)
-					
+					assert(newDirector.dataValues.full_name !== undefined)
+					assert(newDirector.dataValues.dob !== undefined)
+					assert(newDirector.dataValues.favorite_camera !== undefined)
+					assert(newDirector.dataValues.favorite_movies !== undefined)
+					assert(newDirector.dataValues.livestream_ID !== undefined)
+					assert(newDirector.dataValues.id !== undefined)
+					done()
 				})
 
 			})
 		})
 
 		it('should add new director w/o camera and movies',function(done){
-			this.timeout(5000);
 			directory.check(livestreamID_2,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,
@@ -92,12 +87,12 @@ describe('Livestream Tests', function(){
 				directory.add(director_details, function(err,newDirector){
 					assert(err == null)
 					assert(newDirector.dataValues !== undefined)
-                	assert(newDirector.dataValues.full_name !== undefined)
-                	assert(newDirector.dataValues.dob !== undefined)
-                	assert(newDirector.dataValues.favorite_camera !== undefined)
-                	assert(newDirector.dataValues.favorite_movies !== undefined)
-                	assert(newDirector.dataValues.livestream_ID !== undefined)
-                	assert(newDirector.dataValues.id !== undefined)
+					assert(newDirector.dataValues.full_name !== undefined)
+					assert(newDirector.dataValues.dob !== undefined)
+					assert(newDirector.dataValues.favorite_camera !== undefined)
+					assert(newDirector.dataValues.favorite_movies !== undefined)
+					assert(newDirector.dataValues.livestream_ID !== undefined)
+					assert(newDirector.dataValues.id !== undefined)
 					done()
 				})
 
@@ -105,7 +100,6 @@ describe('Livestream Tests', function(){
 		})
 
 		it('should add new director w/o movies',function(done){
-			this.timeout(5000);
 			directory.check(livestreamID_3,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,
@@ -117,12 +111,12 @@ describe('Livestream Tests', function(){
 				directory.add(director_details, function(err,newDirector){
 					assert(err == null)
 					assert(newDirector.dataValues !== undefined)
-                	assert(newDirector.dataValues.full_name !== undefined)
-                	assert(newDirector.dataValues.dob !== undefined)
-                	assert(newDirector.dataValues.favorite_camera !== undefined)
-                	assert(newDirector.dataValues.favorite_movies !== undefined)
-                	assert(newDirector.dataValues.livestream_ID !== undefined)
-                	assert(newDirector.dataValues.id !== undefined)
+					assert(newDirector.dataValues.full_name !== undefined)
+					assert(newDirector.dataValues.dob !== undefined)
+					assert(newDirector.dataValues.favorite_camera !== undefined)
+					assert(newDirector.dataValues.favorite_movies !== undefined)
+					assert(newDirector.dataValues.livestream_ID !== undefined)
+					assert(newDirector.dataValues.id !== undefined)
 					done()
 				})
 
@@ -130,7 +124,6 @@ describe('Livestream Tests', function(){
 		})
 
 		it('should add new director w/o camera',function(done){
-			this.timeout(5000);
 			directory.check(livestreamID_4,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,
@@ -142,12 +135,12 @@ describe('Livestream Tests', function(){
 				directory.add(director_details, function(err,newDirector){
 					assert(err == null)
 					assert(newDirector.dataValues !== undefined)
-                	assert(newDirector.dataValues.full_name !== undefined)
-                	assert(newDirector.dataValues.dob !== undefined)
-                	assert(newDirector.dataValues.favorite_camera !== undefined)
-                	assert(newDirector.dataValues.favorite_movies !== undefined)
-                	assert(newDirector.dataValues.livestream_ID !== undefined)
-                	assert(newDirector.dataValues.id !== undefined)
+					assert(newDirector.dataValues.full_name !== undefined)
+					assert(newDirector.dataValues.dob !== undefined)
+					assert(newDirector.dataValues.favorite_camera !== undefined)
+					assert(newDirector.dataValues.favorite_movies !== undefined)
+					assert(newDirector.dataValues.livestream_ID !== undefined)
+					assert(newDirector.dataValues.id !== undefined)
 					done()
 				})
 
@@ -155,7 +148,6 @@ describe('Livestream Tests', function(){
 		})
 
 		it('should not add new director because they are registered',function(done){
-			this.timeout(5000);
 			directory.check(livestreamID_1,function(err,directorCheck){
 				var director_details = {
 					full_name: directorCheck[0].full_name,

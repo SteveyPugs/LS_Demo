@@ -1,3 +1,21 @@
+Usage
+---------
+
+#### `GET /directors`
+Returns List of registered directors in JSON format
+
+#### `POST /directors`
+Required Key/Value Pairs: livestream_ID
+
+Optional Key/Value Pairs: favorite_camera, favorite_movies
+
+Returns Newly Added Registration
+
+#### `POST /directors/update`
+Required Key/Value Pairs: full_name
+
+Optional Key/Value Pairs: favorite_camera, favorite_movies
+
 Functions
 ---------
 

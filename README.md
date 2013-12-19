@@ -29,6 +29,7 @@ npm install .
 Setup configuration files:
 ```
 cp ./config/database.example.js ./config/database.js
+cp ./config/database.example.js ./config/database.test.js
 cp ./config/config.example.js ./config/config.js
 ```
 
@@ -43,6 +44,19 @@ exports.config = {
   password: 'dbpass'
 };
 ```
+
+Set up the test database connection config in ```./config/database.test.js```. Make sure the credentials are correct as to avoid crashing. The database needs to be created in advance
+```
+exports.config = {
+  type: 'mysql',
+  hostname: 'localhost',
+  port: 3306,
+  db: 'mydbname_test',
+  user: 'dbuser',
+  password: 'dbpass'
+};
+```
+
 Set up the HTTP server, mail, and tls config in ```./config/config.js```. The following is customizable:
 ```
 exports.config = {
